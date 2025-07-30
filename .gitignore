@@ -1,0 +1,36 @@
+# Lua cache
+*.luac
+
+# Test outputs
+tests/output/
+*.log
+
+# Audio files
+*.wav
+*.mp3
+*.m4a
+
+# Transcription outputs
+*.txt
+*.srt
+*.vtt
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temp directories
+temp/
+tmp/
