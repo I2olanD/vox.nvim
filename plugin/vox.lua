@@ -8,11 +8,3 @@ if vim.g.loaded_vox then
 end
 
 vim.g.loaded_vox = 1
-
-local main_module_ok, vox = pcall(require, "vox")
-if not main_module_ok then
-  vim.notify("Vox: Failed to load main module. Plugin may not function correctly.", vim.log.levels.ERROR)
-else
-  -- Auto-setup with default configuration
-  vox.setup()
-end
