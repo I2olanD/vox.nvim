@@ -46,7 +46,7 @@ function M.setup(opts)
   end, { desc = "Show voice plugin status" })
 end
 
-M.toggle_recording = function()
+function M.toggle_recording()
   -- Toggle recording on/off (simulates hold behavior)
   if is_recording then
     M.stop_recording_and_transcribe()
@@ -55,7 +55,7 @@ M.toggle_recording = function()
   end
 end
 
-M.start_recording = function()
+function M.start_recording()
   if is_recording then
     return
   end
@@ -73,7 +73,7 @@ M.start_recording = function()
   end
 end
 
-M.stop_recording_and_transcribe = function()
+function M.stop_recording_and_transcribe()
   if not is_recording then
     return
   end
