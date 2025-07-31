@@ -7,7 +7,10 @@ local ui = require('vox.ui')
 local recording_job = nil
 local is_recording = false
 
-function M.setup()
+function M.setup(opts)
+  -- Initialize config with user options
+  config.setup(opts)
+
   -- Set up keybinding for hold-to-record
   local keybinding = config.get().keybinding
   if keybinding then
@@ -89,6 +92,8 @@ function M.transcribe_and_insert(audio_file)
   transcriber.transcribe(audio_file, function(text, error)
     if error then
       ui.show_error_window(error)
+      -- Don't delete audio file on error, even if keep_audio_files is false
+      vim.notify('Audio file preserved at: ' .. audio_file, vim.log.levels.WARN)
       return
     end
 
@@ -97,11 +102,16 @@ function M.transcribe_and_insert(audio_file)
       ui.show_success_window()
     else
       ui.show_error_window('No text was transcribed')
+      -- Don't delete audio file when no text was transcribed
+      vim.notify('Audio file preserved at: ' .. audio_file, vim.log.levels.WARN)
+      return
     end
 
-    -- Clean up audio file if configured
+    -- Clean up audio file if configured and transcription was successful
     if not config.get().keep_audio_files then
       vim.fn.delete(audio_file)
+    else
+      vim.notify('Audio file saved at: ' .. audio_file, vim.log.levels.INFO)
     end
   end)
 end
@@ -155,6 +165,7 @@ end
 function M.show_status()
   local status = {
     whisper_model = config.get().whisper_model,
+    whisper_language = config.get().language,
     is_recording = is_recording,
     dependencies = {
       sox = vim.fn.executable('sox') == 1,
