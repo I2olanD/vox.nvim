@@ -3,7 +3,6 @@ local M = {}
 M.defaults = {
   -- Audio settings
   max_recording_duration = 60, -- seconds
-  audio_format = "wav",
   sample_rate = 16000,
 
   -- Transcription settings
@@ -42,4 +41,3 @@ function M.get()
 end
 
 return M
-

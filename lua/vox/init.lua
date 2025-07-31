@@ -20,11 +20,11 @@ function M.setup(opts)
   end
 
   -- Create commands
-  vim.api.nvim_create_user_command('VoiceStop', function()
+  vim.api.nvim_create_user_command('VoxStop', function()
     M.stop_recording_and_transcribe()
   end, { desc = "Stop voice recording" })
 
-  vim.api.nvim_create_user_command('VoiceSetModel', function(opts)
+  vim.api.nvim_create_user_command('VoxSetModel', function(opts)
       local model = opts.args
       local valid_models = { 'tiny', 'base', 'small', 'medium', 'large' }
       if vim.tbl_contains(valid_models, model) then
@@ -41,11 +41,11 @@ function M.setup(opts)
       "Set Whisper model size"
     })
 
-  vim.api.nvim_create_user_command('VoiceConfig', function()
+  vim.api.nvim_create_user_command('VoxConfig', function()
     vim.notify(vim.inspect(config.get()))
   end, { desc = "Show voice configuration" })
 
-  vim.api.nvim_create_user_command('VoiceStatus', function()
+  vim.api.nvim_create_user_command('VoxStatus', function()
     M.show_status()
   end, { desc = "Show voice plugin status" })
 end

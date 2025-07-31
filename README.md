@@ -10,10 +10,10 @@ A simple Neovim plugin that records voice audio, transcribes it using local Whis
 
 ### Commands
 
-- `:VoiceStop` - Stop recording if in progress
-- `:VoiceSetModel <size>` - Set Whisper model (tiny/base/small/medium/large)
-- `:VoiceConfig` - Show current configuration
-- `:VoiceStatus` - Show plugin status and dependencies
+- `:VoxStop` - Stop recording if in progress
+- `:VoxSetModel <size>` - Set Whisper model (tiny/base/small/medium/large)
+- `:VoxConfig` - Show current configuration
+- `:VoxStatus` - Show plugin status and dependencies
 
 ## Installation
 

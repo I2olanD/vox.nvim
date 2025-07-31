@@ -98,4 +98,3 @@ function M.stop_recording(job_id)
 end
 
 return M
-
