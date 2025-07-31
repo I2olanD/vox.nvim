@@ -82,7 +82,3 @@ A simple Neovim plugin that records voice audio, transcribes it using local Whis
 ```vim
 :VoiceStatus
 ```
-
-## License
-
-MIT
