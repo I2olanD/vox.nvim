@@ -4,12 +4,13 @@ A simple Neovim plugin that records voice audio, transcribes it using local Whis
 
 ## Usage
 
-### Default Keybinding
+### Keybindings
 
-- `<leader>vr` - Press to start recording, press again to stop and transcribe
+You can configure keybindings via lazy.nvim's `keys` configuration (see Installation section).
 
 ### Commands
 
+- `:VoxRecord` - Toggle recording
 - `:VoxStop` - Stop recording if in progress
 - `:VoxSetModel <size>` - Set Whisper model (tiny/base/small/medium/large)
 - `:VoxConfig` - Show current configuration
@@ -30,7 +31,6 @@ A simple Neovim plugin that records voice audio, transcribes it using local Whis
     require('vox').setup({
         -- Audio settings
         max_recording_duration = 60, -- seconds
-        audio_format = "wav",
         sample_rate = 16000,
 
         -- Transcription settings
@@ -46,13 +46,10 @@ A simple Neovim plugin that records voice audio, transcribes it using local Whis
         -- File settings
         temp_dir = vim.fn.expand("~/.local/share/nvim/vox/"),
         keep_audio_files = false,
-
-        -- Keybinding for hold-to-record
-        keybinding = "<leader>vr"
     })
   end,
   keys = {
-    { "<leader>vr", desc = "Toggle voice recording" }
+      { "<leader>vr", "<cmd>VoxRecord<cr>", desc = "Voice record → transcribe → insert" }
   }
 }
 ```

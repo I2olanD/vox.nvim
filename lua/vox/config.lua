@@ -18,9 +18,6 @@ M.defaults = {
   -- File settings
   temp_dir = vim.fn.expand("~/.local/share/nvim/vox/"),
   keep_audio_files = false,
-
-  -- Keybinding for hold-to-record
-  keybinding = "<leader>vr"
 }
 
 M.options = nil

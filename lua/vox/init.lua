@@ -11,15 +11,11 @@ function M.setup(opts)
   -- Initialize config with user options
   config.setup(opts)
 
-  -- Set up keybinding for hold-to-record
-  local keybinding = config.get().keybinding
-  if keybinding then
-    vim.keymap.set('n', keybinding, function()
-      M.toggle_recording()
-    end, { desc = 'Hold to record voice (press to start/stop)' })
-  end
-
   -- Create commands
+  vim.api.nvim_create_user_command('VoxRecord', function()
+    M.toggle_recording()
+  end, { desc = "Toggle voice recording" })
+
   vim.api.nvim_create_user_command('VoxStop', function()
     M.stop_recording_and_transcribe()
   end, { desc = "Stop voice recording" })
@@ -50,7 +46,7 @@ function M.setup(opts)
   end, { desc = "Show voice plugin status" })
 end
 
-function M.toggle_recording()
+M.toggle_recording = function()
   -- Toggle recording on/off (simulates hold behavior)
   if is_recording then
     M.stop_recording_and_transcribe()
@@ -59,7 +55,7 @@ function M.toggle_recording()
   end
 end
 
-function M.start_recording()
+M.start_recording = function()
   if is_recording then
     return
   end
@@ -77,7 +73,7 @@ function M.start_recording()
   end
 end
 
-function M.stop_recording_and_transcribe()
+M.stop_recording_and_transcribe = function()
   if not is_recording then
     return
   end
