@@ -13,11 +13,10 @@ require('vox').setup({
 
 -- Test commands exist
 local commands = vim.api.nvim_get_commands({})
-assert(commands.VoiceRecord, "VoiceRecord command should exist")
-assert(commands.VoiceSetMode, "VoiceSetMode command should exist")
-assert(commands.VoiceSetModel, "VoiceSetModel command should exist")
-assert(commands.VoiceConfig, "VoiceConfig command should exist")
-assert(commands.VoiceStatus, "VoiceStatus command should exist")
+assert(commands.VoxSetMode, "VoxSetMode command should exist")
+assert(commands.VoxSetModel, "VoxSetModel command should exist")
+assert(commands.VoxConfig, "VoxConfig command should exist")
+assert(commands.VoxStatus, "VoxStatus command should exist")
 
 print("✓ All commands registered successfully")
 
@@ -28,6 +27,7 @@ assert(config.fixed_duration == 3, "Fixed duration should be 3")
 print("✓ Configuration loaded correctly")
 
 -- Test status command
-vim.cmd('VoiceStatus')
+vim.cmd('VoxStatus')
 
-print("\nBasic tests passed! Try running :VoiceRecord to test recording.")
+print("\nBasic tests passed! Try running :VoxRecord to test recording.")
+
